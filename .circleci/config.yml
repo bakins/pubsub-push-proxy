@@ -1,5 +1,13 @@
 version: 2
 jobs:
+  test:
+    environment:
+      GOFLAGS: -mod=vendor
+    docker:
+      - image: circleci/golang:1.12
+    steps:
+      - checkout
+      - run: go test -v .
   release:
     docker:
       - image: circleci/golang:1.12
@@ -8,6 +16,9 @@ jobs:
       - run: curl -sL https://git.io/goreleaser | bash
 workflows:
   version: 2
+  test:
+    jobs:
+      - test
   release:
     jobs:
       - release:
