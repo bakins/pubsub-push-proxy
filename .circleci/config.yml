@@ -1,10 +1,10 @@
 version: 2
 jobs:
   test:
-    environment:
-      GOFLAGS: -mod=vendor
     docker:
       - image: circleci/golang:1.12
+        environment:
+          GOFLAGS: -mod=vendor
     steps:
       - checkout
       - run: go test -v ./...
