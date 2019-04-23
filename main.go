@@ -51,6 +51,8 @@ type pushRequest struct {
 	Subscription string `json:"subscription"`
 }
 
+var version = "unknown"
+
 func main() {
 	project := kingpin.Flag("project", "GCP project").Envar("GCP_PROJECT").Short('p').Required().String()
 	lvl := newLogLevel(kingpin.Flag("log-level", "log level: valid options are debug, info, warn, and error").Short('l').PlaceHolder("LOGLEVEL"))
@@ -60,6 +62,7 @@ func main() {
 	subscription := kingpin.Flag("subscription", "name of the PubSub subscription").Envar("SUBSCRIPTION").Short('s').Required().String()
 	retries := kingpin.Flag("retries", "number of times to retry an HTTP POST").Short('r').Default("10").Int()
 	addr := kingpin.Flag("addr", "listen address for metrics handler").Short('a').Default("127.0.0.1:8080").String()
+	kingpin.Version(version)
 
 	kingpin.HelpFlag.Short('h')
 	kingpin.Parse()
