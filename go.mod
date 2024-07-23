@@ -5,7 +5,7 @@ go 1.12
 require (
 	cloud.google.com/go v0.37.4
 	github.com/alecthomas/kingpin v2.2.6+incompatible
-	github.com/hashicorp/go-retryablehttp v0.5.3
+	github.com/hashicorp/go-retryablehttp v0.7.7
 	github.com/pkg/errors v0.8.1
 	go.opencensus.io v0.20.1
 	go.uber.org/atomic v1.3.2 // indirect
